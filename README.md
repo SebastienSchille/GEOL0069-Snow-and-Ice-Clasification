@@ -25,7 +25,7 @@ This project will focus on the Swiss Alps and the change in glacier ice coverage
 # Methodology
 
 <p align="center">
-  <img src="/Images/ndsi_deployment_region.png" width="600" height="auto"/>
+  <img src="/Images/Glacier Retreat Flowchart.png" width="600" height="auto"/>
 </p>
 
 # References
