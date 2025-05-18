@@ -6,11 +6,11 @@
 
 # 1.0 Project Background
 
-Glaciers are extremely sensitive to climate change and can be studied to highlight key indicators of climate change. There has been an alarming increase in glacier retreat around the globe. This reduction can have catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and hydropower. Accurate monitoring is crucial to not only assessing the impacts of climate change but also informing adaptation strategies.
+Glaciers are extremely sensitive to climate change and can be studied to highlight the rapid change in alpine landscape in the 21st Centaury (Sommer et al., 2020). There has been an alarming increase in glacier retreat around the globe leading to catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and local economies. Accurate monitoring is not only crucial for assessing the impacts of climate change but also to inform mitigation and adaptation strategies.
 
-Traditional data collection methods, such as manual sample collection and interpreting signal data, can be highly time-consuming and often have limited data. Earth observation satellites launched within the Copernicus program have provided scientists with a huge array of data for different applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
+Traditional data collection methods, such as sample collection and manually interpreting satellite data can be highly time-consuming and often have limited data. Earth observation satellites launched within the Copernicus program have provided scientists with various dataset for different applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
 
-This project will focus on the Swiss Alps and the change in glacier ice coverage between 2017 and 2023 using Sentinel-2 data. This project will use the NDSI index as a benchmark and for training of the CNN model.
+This project will focus on the Swiss Alps and the change in glacier ice coverage between 2017 and 2023 using Sentinel-2 data. This project will use the NDSI index as a benchmark and for training the CNN model.
 
 ## 1.1 Study Area & Data Collection:
 
