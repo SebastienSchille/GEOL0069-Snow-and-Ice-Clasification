@@ -190,6 +190,12 @@ For simplification I have divided the environmental cost of this project into th
 
 ## 4.1 AI model training
 
+<p align="center">
+  <img src="/Images/CNN_emissions.png" width="400" height="auto"/>
+</p>
+
+**Figure 14** AI model training emissions estimated by ‘carbontracker’.
+
 
 
 # Acknowledgments
