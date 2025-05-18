@@ -38,13 +38,46 @@ The following dates were selected:
    
 # 2.0 Methodology
 
-The flowchart below:
+Following data collecction and visulasation the test, validation and deployment area were selected. The flowchart below illustrates the work flow of the project:
 
 <p align="center">
   <img src="/Images/Glacier_retreat_flowchart.png" width="1000" height="auto"/>
 </p>
 
+## Sentinel-2 Optical sensors
+
+
+
+## Snow and Ice Indicies
+
+This project uses a combination of indicies that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflects green visable light while it is highly absoarbative of short wave infrared (SWIR). Aditionally clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be caluclated from the equation below:
+
+**NDSI** = (B3 − B11) / (B3 + B11)  
+*Where:*  
+- **B3** = Green band (~560 nm)  
+- **B11** = Short-Wave Infrared (SWIR) band (~1610 nm)  
+
+However, this index will struggle to distinguish between snow and ice, leading to misidentification. Short snowfall event could lead to altering results when believed to be glacier ice. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differenciate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
+
+**NDSII** = (B11 − B8A) / (B11 + B8A)  
+*Where:*  
+- **B11** = Short-Wave Infrared (SWIR) band (~1610 nm)  
+- **B8A** = Narrow Near-Infrared (NIR) band (~865 nm)
+
+## K-means learning
+
+K-means classification is an unsupervised machine learning tool that doesn't require labelled data. It will compare neighbouring pixels to find trends, patterns and similarity. The initialisation, location, and parameters of the centriods used in the model can be changed to meet the user's needs. The model can be adjusted to change the number of clusters or groups to be identified. In this project, this method was used as a baseline classifier to find ice-covered areas.
+
+## CNN model
+
+Convolutional Nueral Networks
+
+
+
 # 3.0 Results & Discussion
+
+Limitations:
+- Water and cloud detection
 
 # 4.0 Project enviromental Cost
 
