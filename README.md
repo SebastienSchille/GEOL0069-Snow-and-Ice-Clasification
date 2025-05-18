@@ -72,7 +72,7 @@ This project uses a combination of indices that have been developed for snow and
 - **B11** = Short-Wave Infrared (SWIR) band (~1610 nm)
 
 <p align="center">
-  <img src="/Images/ndsi_deployment_region.png" width="600" height="auto"/>
+  <img src="/Images/NDSII_calculation.png" width="1000" height="auto"/>
 </p>
 
 However, this index will struggle to distinguish between snow and ice, leading to misidentification. Short snowfall event could lead to altering results when believed to be glacier ice. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differenciate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
@@ -83,7 +83,7 @@ However, this index will struggle to distinguish between snow and ice, leading t
 - **B8A** = Narrow Near-Infrared (NIR) band (~865 nm)
 
 <p align="center">
-  <img src="/Images/ndsi_deployment_region.png" width="600" height="auto"/>
+  <img src="/Images/NDSI_calculation.png" width="1000" height="auto"/>
 </p>
 
 ---
@@ -97,10 +97,24 @@ The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
 | Typical use      | Glacier/snow detection, conservative cutoff  | Snow/ice vs water or wet rock discrimination | Helps refine glacier detection beyond NDSI alone                   |
 | Sensitivity      | May miss debris-covered glaciers             | May exclude moist or shadowed glacier areas  | Might underdetect complex surfaces like dirty ice or thin snow     |
 
+<p align="center">
+  <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
+</p>
 
 ## 2.3 K-means learning
 
 K-means classification is an unsupervised machine learning tool that doesn't require labelled data. It will compare neighbouring pixels to find trends, patterns and similarity. The initialisation, location, and parameters of the centroids used in the model can be changed to meet the user's needs. The model can be adjusted to change the number of clusters or groups to be identified. In this project, this method was used as a baseline classifier to find ice-covered areas.
+
+
+<p align="center">
+  <img src="/Images/K_means_mask.png" width="1000" height="auto"/>
+</p>
+
+
+<p align="center">
+  <img src="/Images/K_means_confusion_matrix.png" width="500" height="auto"/>
+</p>
+
 
 ## 2.4 CNN model
 
@@ -109,6 +123,15 @@ Convolutional Neural Networks (CNNs) are a type supervised machine learning tool
 
 # 3.0 Results & Discussion
 
+
+<p align="center">
+  <img src="/Images/CNN_validation_region.png" width="1000" height="auto"/>
+</p>
+
+
+<p align="center">
+  <img src="/Images/CNN_deployment_region.png" width="1000" height="auto"/>
+</p>
 
 
 
