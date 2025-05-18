@@ -1,6 +1,7 @@
-<p align="center">
-  <img src="/Images/ndsi_deployment_region.png" width="600" height="auto"/>
-</p>
+<div style="display: flex; justify-content: center; gap: 20px;">
+  <img src="/Images/ndsi_deployment_region.png" width="500" height="auto"/>
+  <img src="/Images/Glacier_retreat_2.png" width="500" height="auto"/>
+</div>
 
 # Monitoring Glacier Retreat in the Swiss Alps Using Supervised and Unsupervised Machine Learning.
 
@@ -32,6 +33,8 @@ The following area were selected:
   <img src="/Images/area_of_interest.png" width="1000" height="auto"/>
 </p>
 
+**Figure 1:** Satellite images in the SWIR band for the areas of interest.
+
 ## 1.2 Aims & Objectives
 
 1. To collect Sentinel-2 satellite imagery data from the region of interest in the summer months (2017 & 2023) to ensure cloud-free, comparable data for glacier analysis
@@ -50,6 +53,8 @@ Following data collecction and visulasation the test, validation and deployment 
   <img src="/Images/Glacier_retreat_flowchart.png" width="1000" height="auto"/>
 </p>
 
+**Figure 2:** Flowchart for the methodology and implementation of AI in this project.
+
 ## 2.1 Sentinel-2 Optical sensors
 
 Sentinel-2 is equipptd with a with an advanced MultiSpectral Instrument (MSI). This sensor captures high-resolution imagery across 13 spectral bands, specifically designed for earth observation applications. This project will use the bands from the table below:
@@ -61,6 +66,8 @@ Sentinel-2 is equipptd with a with an advanced MultiSpectral Instrument (MSI). T
 | B4   | Red                 | 665              | 10 m        | General land cover classification                 |
 | B8A  | Narrow NIR          | 865              | 20 m        | Used in **NDSII**, better glacier detection       |
 | B11  | SWIR                | 1610             | 20 m        | Used in **NDSI & NDSII**, ice and snow absorption |
+
+**Table 1:** Sentinel-2 optical bands used in this project.
 
 ## 2.2 Snow and Ice Indices
 
@@ -75,6 +82,8 @@ This project uses a combination of indices that have been developed for snow and
   <img src="/Images/NDSII_calculation.png" width="1000" height="auto"/>
 </p>
 
+**Figure 3:** NDSI calculated for the three areas of interest.
+
 However, this index will struggle to distinguish between snow and ice, leading to misidentification. Short snowfall event could lead to altering results when believed to be glacier ice. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differenciate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
 
 **NDSII** = (B11 − B8A) / (B11 + B8A)  
@@ -85,6 +94,8 @@ However, this index will struggle to distinguish between snow and ice, leading t
 <p align="center">
   <img src="/Images/NDSI_calculation.png" width="1000" height="auto"/>
 </p>
+
+**Figure 4:** NDSI calculated for the three areas of interest.
 
 ---
 
@@ -97,29 +108,46 @@ The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
 | Typical use      | Glacier/snow detection, conservative cutoff  | Snow/ice vs water or wet rock discrimination | Helps refine glacier detection beyond NDSI alone                   |
 | Sensitivity      | May miss debris-covered glaciers             | May exclude moist or shadowed glacier areas  | Might underdetect complex surfaces like dirty ice or thin snow     |
 
+**Table 2:** Explanation of differences between the NDSI and NDSII indices.
+
 <p align="center">
   <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
 </p>
 
+**Figure 5:** Mask created and labelled for glacier ice using the NDSI & NDSII indices.
+
 ## 2.3 K-means learning
 
-K-means classification is an unsupervised machine learning tool that doesn't require labelled data. It will compare neighbouring pixels to find trends, patterns and similarity. The initialisation, location, and parameters of the centroids used in the model can be changed to meet the user's needs. The model can be adjusted to change the number of clusters or groups to be identified. In this project, this method was used as a baseline classifier to find ice-covered areas.
+K-means classification is an unsupervised machine learning tool that doesn't require labelled data. It will compare neighbouring pixels to find trends, patterns and similarity. The initialisation, location, and parameters of the centroids used in the model can be changed to meet the user's needs (IBM, 2024). The model can be adjusted to change the number of clusters or groups to be identified. In this project, this method was used as a baseline classifier to find ice-covered areas.
 
+<p align="center">
+  <img src="/Images/K_means_figure.png" width="600" height="auto"/>
+</p>
+
+**Figure 6:** Illustration of K-means machine learning algorithm.
 
 <p align="center">
   <img src="/Images/K_means_mask.png" width="1000" height="auto"/>
 </p>
 
+**Figure 7:** Masks created using K-means for Ice detection.
 
 <p align="center">
   <img src="/Images/K_means_confusion_matrix.png" width="500" height="auto"/>
 </p>
 
+**Figure 8** Confusion matrix to compare with the NDSI & NDSII benchmark mask.
+
 
 ## 2.4 CNN model
 
-Convolutional Neural Networks (CNNs) are a type supervised machine learning tool trained by using labelled data. These networks are designed to work with classification tasks such as imagery or object detection. They use a gridlike topogrpahy to detect patterns, trends and texture. In this project a CNN model will be trained using labelled data from the benchmark indices and the bands listed in table X.
+Convolutional Neural Networks (CNNs) are a type supervised machine learning tool trained by using labelled data. These networks are designed to work with classification tasks such as imagery or object detection. They use a gridlike topogrpahy to detect patterns, trends and texture (IBM, 2025). In this project a CNN model will be trained using labelled data from the benchmark indices and the bands listed in table 1.
 
+<p align="center">
+  <img src="/Images/CNN_figure.png" width="600" height="auto"/>
+</p>
+
+**Figure 9** Illustration of the convolution layers in CNN models.
 
 # 3.0 Results & Discussion
 
@@ -128,11 +156,25 @@ Convolutional Neural Networks (CNNs) are a type supervised machine learning tool
   <img src="/Images/CNN_validation_region.png" width="1000" height="auto"/>
 </p>
 
+**Figure 10** CNN model rollout on the validation region.
 
 <p align="center">
   <img src="/Images/CNN_deployment_region.png" width="1000" height="auto"/>
 </p>
 
+**Figure 11** CNN model rollout on the deployment region.
+
+<p align="center">
+  <img src="/Images/Glacier_retreat.png" width="600" height="auto"/>
+</p>
+
+**Figure 12** Glacier retreat (difference between 2017-2023 summer).
+
+<p align="center">
+  <img src="/Images/Projected_ice_loss.png" width="600" height="auto"/>
+</p>
+
+**Figure 13** Projected glacier loss using an exponential decay model.
 
 
 Limitations:
@@ -140,8 +182,16 @@ Limitations:
 
 # 4.0 Project enviromental Cost
 
-# References
 
+
+# Acknowledgments
+
+This project was created for the final project part of the AI for Earth Observation (GEOL0069) module taught by Dr Michel Tsamados at UCL.
+
+# References
+IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
+IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
+Jeffares, A. (2019, November 19). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
 Sommer, C., Malz, P., Seehaus, T.C. et al. Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nat Commun 11, 3209 (2020). https://doi.org/10.1038/s41467-020-16818-0
 
 
