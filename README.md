@@ -1,6 +1,6 @@
 <div style="display: flex; justify-content: center; gap: 20px;">
-  <img src="/Images/ndsi_deployment_region.png" width="500" height="auto"/>
-  <img src="/Images/Glacier_retreat_2.png" width="500" height="auto"/>
+  <img src="/Images/ndsi_deployment_region.png" width="400" height="auto"/>
+  <img src="/Images/Glacier_retreat_2.png" width="400" height="auto"/>
 </div>
 
 # Monitoring Glacier Retreat in the Swiss Alps Using Supervised and Unsupervised Machine Learning.
