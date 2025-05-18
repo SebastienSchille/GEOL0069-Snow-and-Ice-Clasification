@@ -141,7 +141,7 @@ K-means classification is an unsupervised machine learning tool that doesn't req
 
 ## 2.4 CNN model
 
-Convolutional Neural Networks (CNNs) are a type supervised machine learning tool trained by using labelled data. These networks are designed to work with classification tasks such as imagery or object detection. They use a gridlike topogrpahy to detect patterns, trends and texture (IBM, 2025). In this project a CNN model will be trained using labelled data from the benchmark indices and the bands listed in table 1.
+Convolutional Neural Networks (CNNs) are a type of supervised machine learning model that are trained using labelled datasets. These networks are particularly well-suited for classification tasks, such as image recognition, object detection, and segmentation, because they are specifically designed to process data with a grid-like topology. CNNs operate by applying convolutional filters across the input data, allowing them to automatically detect and learn important patterns, trends, textures, and spatial hierarchies within the images (IBM, 2025). This capability enables CNNs to extract features at multiple scales and levels of abstraction, from simple edges to complex shapes. In this project, a CNN model will be trained using labelled data derived from benchmark indices alongside Sentinal-2 optical bands listed in Table 1.
 
 <p align="center">
   <img src="/Images/CNN_figure.png" width="600" height="auto"/>
@@ -181,6 +181,14 @@ Limitations:
 - Water and cloud detection
 
 # 4.0 Project enviromental Cost
+
+For simplification I have divided the environmental cost of this project into the following sections:
+1. AI model training 
+2. Computer power
+3. Cloud services
+4. Indirect emissions
+
+## 4.1 AI model training
 
 
 
