@@ -12,7 +12,7 @@ Traditional data collection methods, such as sample collection and manual interp
 
 This project will focus on the Swiss Alps and the change in glacier ice coverage between 2017 and 2023 using Sentinel-2 data. The Normalised Difference Snow Index (NDSI) will be used as a benchmark and for training the CNN model. Unsupervised and supervised AI models will be deployed, with results quantified and discussed. Additionally, this project hopes to demonstrate proof of concept with a model that is transferable to other regions and discuss the limitations and recommended model changes.
 
-## 1.1 Study Area & Data Collection:
+## 1.1 Study Area & Data Collection
 
 The data for this project has been sourced using the 'Data Collection.ipynb' available in the GitHub repository. The data was collected using the Copernicus database, with the region of interest covering the Swiss Alps, focusing on the Zermatt and Saas-Fe valleys.
 
@@ -56,9 +56,9 @@ Sentinel-2 is equipptd with a with an advanced MultiSpectral Instrument (MSI). T
 | B8A  | Narrow NIR          | 865              | 20 m        | Used in **NDSII**, better glacier detection       |
 | B11  | SWIR                | 1610             | 20 m        | Used in **NDSI & NDSII**, ice and snow absorption |
 
-## Snow and Ice Indicies
+## Snow and Ice Indices
 
-This project uses a combination of indicies that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflects green visable light while it is highly absoarbative of short wave infrared (SWIR). Aditionally clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be caluclated from the equation below:
+This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflects green visable light while it is highly absoarbative of short wave infrared (SWIR). Aditionally clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be caluclated from the equation below:
 
 **NDSI** = (B3 − B11) / (B3 + B11)  
 *Where:*  
@@ -90,11 +90,12 @@ K-means classification is an unsupervised machine learning tool that doesn't req
 
 ## CNN model
 
-Convolutional Nueral Networks (CNNs) are a supervised machine learning tool that trains by using labelled data.
-
+Convolutional Neural Networks (CNNs) are a type supervised machine learning tool trained by using labelled data. These networks are designed to work with classification tasks such as imagery or object detection. They use a gridlike topogrpahy to detect patterns, trends and texture. In this project a CNN model will be trained using labelled data from the benchmark indices and the bands listed in table X.
 
 
 # 3.0 Results & Discussion
+
+
 
 Limitations:
 - Water and cloud detection
