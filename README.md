@@ -45,7 +45,7 @@ Figure 1 shows the areas selceted for model training, validation and deploment. 
 
 **3.** To apply k-means learning as an unsupervised method for initial classification of areas with glacier ice cover.
 
-**4.** To train a Convolutional Neural Network (CNN) using labelled data derived from a labelled mask created from the benchmark indicators.
+**4.** To train a Convolutional Neural Network (CNN) using labelled data derived from a mask created using the benchmark indicators.
 
 **5.** To validate the machine learning outputs by comparing them to NDSI/NDSII-based classifications.
 
@@ -65,7 +65,7 @@ The flowchart below illustrates the workflow of the project:
 
 ## 2.1 Sentinel-2 Optical sensors
 
-Sentinel-2 is equipptd with a with an advanced MultiSpectral Instrument (MSI). This sensor captures high-resolution imagery across 13 spectral bands, specifically designed for earth observation applications. This project will use the bands from the table below:
+Sentinel-2 is equipped with a with an advanced Multispectral Instrument (MSI). This sensor captures high-resolution imagery across 13 spectral bands, specifically designed for earth observation applications. This project will use the bands from the table below:
 
 | Band | Name                | Wavelength (nm) | Resolution | Use for Glacier Mapping                           |
 |------|---------------------|------------------|-------------|---------------------------------------------------|
@@ -75,35 +75,37 @@ Sentinel-2 is equipptd with a with an advanced MultiSpectral Instrument (MSI). T
 | B8A  | Narrow NIR          | 865              | 20 m        | Used in **NDSII**, better glacier detection       |
 | B11  | SWIR                | 1610             | 20 m        | Used in **NDSI & NDSII**, ice and snow absorption |
 
-**Table 1:** Sentinel-2 optical bands used in this project.
+**Table 1:** Sentinel-2 optical bands used in this project (SentiWiki, 2025).
 
 ## 2.2 Snow and Ice Indices
 
-This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflects green visable light while it is highly absoarbative of short wave infrared (SWIR). Aditionally clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be caluclated from the equation below:
+This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflect green visible light while it is highly absorbative of short-wave infrared (SWIR). Additionally, clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be calculated from the equation below:
 
 **NDSI** = (B3 − B11) / (B3 + B11)  
+
 *Where:*  
 - **B3** = Green band (~560 nm)  
 - **B11** = Short-Wave Infrared (SWIR) band (~1610 nm)
 
 <p align="center">
-  <img src="/Images/NDSII_calculation.png" width="1000" height="auto"/>
+  <img src="/Images/NDSI_calculation.png" width="1000" height="auto"/>
 </p>
 
 **Figure 3:** NDSI calculated for the three areas of interest.
 
-However, this index will struggle to distinguish between snow and ice, leading to misidentification. Short snowfall event could lead to altering results when believed to be glacier ice. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differenciate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
+However, this index will struggle to distinguish between snow and ice, leading to misidentification. Additionally, in Figure 3 the NDSI index has labelled a frozen lake as glacier ice in the deployment region. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differentiate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
 
 **NDSII** = (B11 − B8A) / (B11 + B8A)  
+
 *Where:*  
 - **B11** = Short-Wave Infrared (SWIR) band (~1610 nm)  
 - **B8A** = Narrow Near-Infrared (NIR) band (~865 nm)
 
 <p align="center">
-  <img src="/Images/NDSI_calculation.png" width="1000" height="auto"/>
+  <img src="/Images/NDSII_calculation.png" width="1000" height="auto"/>
 </p>
 
-**Figure 4:** NDSI calculated for the three areas of interest.
+**Figure 4:** NDSII calculated for the three areas of interest.
 
 ---
 
@@ -116,7 +118,7 @@ The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
 | Typical use      | Glacier/snow detection, conservative cutoff  | Snow/ice vs water or wet rock discrimination | Helps refine glacier detection beyond NDSI alone                   |
 | Sensitivity      | May miss debris-covered glaciers             | May exclude moist or shadowed glacier areas  | Might underdetect complex surfaces like dirty ice or thin snow     |
 
-**Table 2:** Explanation of differences between the NDSI and NDSII indices.
+**Table 2:** Explanation of differences between the NDSI and NDSII indices (SentiWiki, 2025).
 
 <p align="center">
   <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
@@ -217,6 +219,7 @@ Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps 
 IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
 IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
 Jeffares, A. (2019, November 19). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
+SentiWiki. (2025). S2 Applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
 Sommer, C., Malz, P., Seehaus, T.C. et al. Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nat Commun 11, 3209 (2020). https://doi.org/10.1038/s41467-020-16818-0
 
 
