@@ -7,9 +7,9 @@
 
 # 1.0 Project Background
 
-Glaciers are extremely sensitive to climate change and can be studied to highlight the rapid change in alpine landscape in the 21st Century (Sommer et al., 2020). There has been an alarming increase in glacier retreat around the globe, leading to catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and local economies. Accurate monitoring is not only crucial for assessing the impacts of climate change but also for informing mitigation and adaptation strategies.
+Glaciers are extremely sensitive to climate change and can be studied to highlight the rapid change in alpine landscape within the 21st Century (Sommer et al., 2020). There has been an alarming increase in glacier retreat around the globe, leading to catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and local economies. Accurate monitoring is not only crucial for assessing the impacts of climate change but also for informing mitigation and adaptation strategies (Paul et al., 2007).
 
-Traditional data collection methods, such as sample collection and manual interpretation of satellite data, can be highly time-consuming and often have limited insights. Earth observation satellites launched within the Copernicus program have provided scientists with various datasets for a multitude of applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
+Traditional data collection methods, such as sample collection and manual interpretation of satellite data, can be highly time-consuming and often provide limited insights. Earth observation satellites launched within the Copernicus program have provided scientists with various datasets for a multitude of applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
 
 This project will focus on the Swiss Alps and the change in glacier ice coverage between 2017 and 2023 using Sentinel-2 data. The Normalised Difference Snow Index (NDSI) will be used as a benchmark and for training the CNN model. Unsupervised and supervised AI models will be deployed, with results quantified and discussed. Additionally, this project hopes to demonstrate proof of concept with a model that is transferable to other regions and discuss the limitations and recommended model changes.
 
@@ -22,12 +22,14 @@ The following dates were selected:
  * 15/08/2017
  * 20/07/2023 
 
- The following satellite data files for the data above were downloaded:
+ The following satellite data files for the dates above were downloaded:
 
  * S2A_MSIL2A_20170815T102021_N0500_R065_T32TMS_20231005T191904.SAFE
  * S2B_MSIL2A_20230720T101609_N0509_R065_T32TMS_20230720T131906.SAFE
 
-The following area were selected:
+---
+
+Figure 1 shows the areas selceted for model training, validation and deploment. The darker areas in the SWIR band will represent ice in this case.
 
 <p align="center">
   <img src="/Images/area_of_interest.png" width="1000" height="auto"/>
@@ -37,17 +39,23 @@ The following area were selected:
 
 ## 1.2 Aims & Objectives
 
-1. To collect Sentinel-2 satellite imagery data from the region of interest in the summer months (2017 & 2023) to ensure cloud-free, comparable data for glacier analysis
-2. To calculate the Normalised Difference Snow Index (NDSI) and Normalised Difference Snow and Ice Index (NDSII) as benchmark indicators of snow and glacier-covered areas
-3. To apply k-means learning as an unsupervised method for initial classification of areas with glacier ice cover.
-4. To train a Convolutional Neural Network (CNN) using labelled data derived from a labelled mask created from the benchmark indicators.
-5. To validate the machine learning outputs by comparing them to NDSI/NDSII-based classifications.
-6. To quantify changes in glacier extent between 2017 and 2023 by analysing the differences between glacier masks.
-7. To evaluate the accuracy and limitations of combining unsupervised and supervised learning for glacier monitoring, including the scalability and potential model improvements
+**1.** To collect Sentinel-2 satellite imagery data from the region of interest in the summer months (2017 & 2023) to ensure cloud-free, comparable data for glacier analysis
+
+**2.** To calculate the Normalised Difference Snow Index (NDSI) and Normalised Difference Snow and Ice Index (NDSII) as benchmark indicators of snow and glacier-covered areas
+
+**3.** To apply k-means learning as an unsupervised method for initial classification of areas with glacier ice cover.
+
+**4.** To train a Convolutional Neural Network (CNN) using labelled data derived from a labelled mask created from the benchmark indicators.
+
+**5.** To validate the machine learning outputs by comparing them to NDSI/NDSII-based classifications.
+
+**6.** To quantify changes in glacier extent between 2017 and 2023 by analysing the differences between glacier masks.
+
+**7.** To evaluate the accuracy and limitations of combining unsupervised and supervised learning for glacier monitoring, including the scalability and potential model improvements
    
 # 2.0 Methodology
 
-Following data collecction and visulasation the test, validation and deployment area were selected. The flowchart below illustrates the work flow of the project:
+The flowchart below illustrates the workflow of the project:
 
 <p align="center">
   <img src="/Images/Glacier_retreat_flowchart.png" width="1000" height="auto"/>
@@ -190,11 +198,12 @@ For simplification I have divided the environmental cost of this project into th
 
 ## 4.1 AI model training
 
+
 <p align="center">
   <img src="/Images/CNN_emissions.png" width="400" height="auto"/>
 </p>
 
-**Figure 14** AI model training emissions estimated by ‘carbontracker’.
+**Figure 14** AI model training emissions estimated by ‘carbontracker’ (Anthony et al., 2020).
 
 
 
@@ -203,6 +212,8 @@ For simplification I have divided the environmental cost of this project into th
 This project was created for the final project part of the AI for Earth Observation (GEOL0069) module taught by Dr Michel Tsamados at UCL.
 
 # References
+Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. arXiv:2007.03051.
+Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
 IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
 IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
 Jeffares, A. (2019, November 19). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
