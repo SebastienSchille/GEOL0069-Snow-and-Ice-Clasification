@@ -134,7 +134,10 @@ K-means classification is an unsupervised machine learning tool that doesn't req
   <img src="/Images/K_means_figure.png" width="600" height="auto"/>
 </p>
 
-**Figure 6:** Illustration of K-means machine learning algorithm.
+**Figure 6:** Illustration of K-means machine learning algorithm (Jeffares, 2019).
+
+---
+K-means was used to classify glacier ice was used to generate the mask show in Figure 7. The confusion matrix (Figure 8) shows a high accuracy with the mask created by the benchmark indices, however there are some clear visual differences. The algorithm has successfully disregarded the water body in the deployment area however due to limited model depth it will struggle in more complex region especially determining between snow and ice. Therefore, it is preferable to train a CNN model that can be developed for high accuracy.
 
 <p align="center">
   <img src="/Images/K_means_mask.png" width="1000" height="auto"/>
@@ -161,12 +164,18 @@ Convolutional Neural Networks (CNNs) are a type of supervised machine learning m
 
 # 3.0 Results & Discussion
 
+The snow and ice indices used for this project were used to set a benchmark mask for the machine learning models. The selection thresholds are often unclear and must be assessed for each area of interest - limiting scalability and increasing manual labour. To automate the process AI models can be used learning from these indices and being trained on varying regions with different landscapes and conflicting object such as bodies of water and clouds. In this project it was decided the use the Normalised Difference Snow Index (NDSI) at a threshold of >0.4 which removed fresh snow along with other misidentified feature but while including the old glacier ice. When the threshold was increased to >0.5 the old glacier ice was not considered as ice due to its.... However, this lower threshold included a body of water in the lower right of the deployment region. To attempt to remove this feature a experiment index form () stated as the Normalised Difference Snow and Ice Index (NDSII) was used in conjunction. The use of the additional NIR band allowed for the remove of the water body. In conclusion, indices used to categories land areas and identify feature as a powerful tool and require little processing power, however the correct application is essential to ensure accurate results.
+
+The masks created by the indices (shown in Figure 5) where used to train the CNN model on the test region. This model was then rolled out on the validation region with the results shown in Figure 10. The CNN model was able to identify glacier ice with high accuracy when compared to the index benchmark.
+
 
 <p align="center">
   <img src="/Images/CNN_validation_region.png" width="1000" height="auto"/>
 </p>
 
 **Figure 10** CNN model rollout on the validation region.
+
+However, when the CNN model was rolled out on the deployment region the water body was miss identified as glacier ice. This is likely due to the training area not including a water body for initial training. This highlights the importance of a large and varied training data set for a CNN model. This requires manual labour time and large processing cost.
 
 <p align="center">
   <img src="/Images/CNN_deployment_region.png" width="1000" height="auto"/>
@@ -218,7 +227,7 @@ Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and
 Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
 IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
 IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
-Jeffares, A. (2019, November 19). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
+Jeffares, A. (2019). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
 SentiWiki. (2025). S2 Applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
 Sommer, C., Malz, P., Seehaus, T.C. et al. Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nat Commun 11, 3209 (2020). https://doi.org/10.1038/s41467-020-16818-0
 
