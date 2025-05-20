@@ -55,13 +55,13 @@ Figure 1 shows the areas selceted for model training, validation and deploment. 
    
 # 2.0 Methodology
 
-The flowchart below illustrates the workflow of the project:
+The figure below illustrates the workflow of the project:
 
 <p align="center">
-  <img src="/Images/Glacier_retreat_flowchart.png" width="1000" height="auto"/>
+  <img src="/Images/Flowchart for project.png" width="800" height="auto"/>
 </p>
 
-**Figure 2:** Flowchart for the methodology and implementation of AI in this project.
+**Figure 2:** Illustration of the methodology and implementation of AI in this project.
 
 ## 2.1 Sentinel-2 Optical sensors
 
@@ -79,7 +79,7 @@ Sentinel-2 is equipped with a with an advanced Multispectral Instrument (MSI). T
 
 ## 2.2 Snow and Ice Indices
 
-This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance. Snow and ice reflect green visible light while it is highly absorbative of short-wave infrared (SWIR). Additionally, clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be calculated from the equation below:
+This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance (SentiWiki, 2025). Snow and ice reflect green visible light while it is highly absorbative of short-wave infrared (SWIR). Additionally, clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be calculated from the equation below:
 
 **NDSI** = (B3 − B11) / (B3 + B11)  
 
@@ -93,7 +93,7 @@ This project uses a combination of indices that have been developed for snow and
 
 **Figure 3:** NDSI calculated for the three areas of interest.
 
-However, this index will struggle to distinguish between snow and ice, leading to misidentification. Additionally, in Figure 3 the NDSI index has labelled a frozen lake as glacier ice in the deployment region. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used. This index helps to differentiate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
+However, this index will struggle to distinguish between snow and ice, leading to misidentification. Additionally, in Figure 3 the NDSI index has labelled a frozen lake as glacier ice in the deployment region. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used (Keshri, 2008). This index helps to differentiate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
 
 **NDSII** = (B11 − B8A) / (B11 + B8A)  
 
@@ -118,7 +118,7 @@ The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
 | Typical use      | Glacier/snow detection, conservative cutoff  | Snow/ice vs water or wet rock discrimination | Helps refine glacier detection beyond NDSI alone                   |
 | Sensitivity      | May miss debris-covered glaciers             | May exclude moist or shadowed glacier areas  | Might underdetect complex surfaces like dirty ice or thin snow     |
 
-**Table 2:** Explanation of differences between the NDSI and NDSII indices (SentiWiki, 2025).
+**Table 2:** Explanation of differences between the NDSI and NDSII indices (SentiWiki, 2025)(Keshri, 2008).
 
 <p align="center">
   <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
@@ -224,11 +224,19 @@ This project was created for the final project part of the AI for Earth Observat
 
 # References
 Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. arXiv:2007.03051.
+
+Keshri, A. K., Shukla, A., & Gupta, R. P. (2008). ASTER ratio indices for supraglacial terrain mapping. International Journal of Remote Sensing, 30(2), 519–524. https://doi.org/10.1080/01431160802385459
+
 Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
+
 IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
+
 IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
+
 Jeffares, A. (2019). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
+
 SentiWiki. (2025). S2 Applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
+
 Sommer, C., Malz, P., Seehaus, T.C. et al. Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nat Commun 11, 3209 (2020). https://doi.org/10.1038/s41467-020-16818-0
 
 
