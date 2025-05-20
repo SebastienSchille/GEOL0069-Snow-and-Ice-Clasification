@@ -204,13 +204,14 @@ It is important to reiterate the limitations of this model and its sensitivity t
 # 4.0 Project enviromental Cost
 
 For simplification I have divided the environmental cost of this project into the following sections:
-1. AI model training 
-2. Computer power
-3. Cloud services
-4. Indirect emissions
+1. **AI model training**
+2. **Computing power**
+3. **Cloud services**
+4. **Indirect emissions**
 
 ## 4.1 AI model training
 
+AI models require large computational power to train and validate the models built. To ensure the accuracy of these models, large data sets must be used along with many epochs. The estimation for the consumption of these models can be done with several programs created such as carbontracker (Anthony et al., 2020). The code create enables integration into the user’s code and will output total consumption. The output shown in Figure 14 is the estimated emissions related to training my AI model. However low the emission seem, the model was re trained many times and was a simplified proof of concept model compared to what would need to built for industry applications.
 
 <p align="center">
   <img src="/Images/CNN_emissions.png" width="400" height="auto"/>
@@ -218,7 +219,16 @@ For simplification I have divided the environmental cost of this project into th
 
 **Figure 14** AI model training emissions estimated by ‘carbontracker’ (Anthony et al., 2020).
 
+## Computing power
 
+Computer power will be the main source of emissions for this project with research, and coding required. 
+
+-	Estimated Co2 emission per kWh in the UK
+-	8hrs for 5 days estimation
+
+## Cloud services
+
+## Indirect emissions
 
 # Acknowledgments
 
