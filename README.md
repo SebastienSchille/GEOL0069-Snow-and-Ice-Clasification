@@ -223,7 +223,7 @@ For simplification I have divided the environmental cost of this project into th
 This project was created for the final project part of the AI for Earth Observation (GEOL0069) module taught by Dr Michel Tsamados at UCL.
 
 # References
-Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. arXiv:2007.03051.
+Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. https://github.com/lfwa/carbontracker.
 
 Keshri, A. K., Shukla, A., & Gupta, R. P. (2008). ASTER ratio indices for supraglacial terrain mapping. International Journal of Remote Sensing, 30(2), 519–524. https://doi.org/10.1080/01431160802385459
 
