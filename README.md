@@ -164,7 +164,7 @@ Convolutional Neural Networks (CNNs) are a type of supervised machine learning m
 
 # 3.0 Results & Discussion
 
-The snow and ice indices used for this project were used to set a benchmark mask for the machine learning models. The selection thresholds are often unclear and must be assessed for each area of interest - limiting scalability and increasing manual labour. To automate the process AI models can be used learning from these indices and being trained on varying regions with different landscapes and conflicting object such as bodies of water and clouds. In this project it was decided the use the Normalised Difference Snow Index (NDSI) at a threshold of >0.4 which removed fresh snow along with other misidentified feature but while including the old glacier ice. When the threshold was increased to >0.5 the old glacier ice was not considered as ice due to its.... However, this lower threshold included a body of water in the lower right of the deployment region. To attempt to remove this feature a experiment index form () stated as the Normalised Difference Snow and Ice Index (NDSII) was used in conjunction. The use of the additional NIR band allowed for the remove of the water body. In conclusion, indices used to categories land areas and identify feature as a powerful tool and require little processing power, however the correct application is essential to ensure accurate results.
+The snow and ice indices used for this project were used to create a benchmark mask for the machine learning models. The selection of adequate thresholds is often unclear and must be assessed for each area of interest - limiting scalability and increasing manual labour. To automate the process AI models can be used to learn from these indices and be trained on varying regions with different landscapes and conflicting objects, such as, bodies of water and clouds. In this project the Normalised Difference Snow Index (NDSI) was set with a threshold of >0.4 which removed fresh snow along with other misidentified features, while including the older glacier ice. When the threshold was increased to >0.5 older debris covered glacier ice was not considered as ice due to its lower reflectance in the green band. However, this lower threshold included a body of water in the lower right of the deployment region. To attempt to remove this feature an experiment index form (Keshri, 2008) stated as the Normalised Difference Snow and Ice Index (NDSII) and was applied in conjunction. The use of the additional NIR band allowed for the remove of the water body due to its low reflectance. In conclusion, indices used to categories land areas and identify feature as a powerful tool and require little processing power, however the correct application is essential to ensure accurate results.
 
 The masks created by the indices (shown in Figure 5) where used to train the CNN model on the test region. This model was then rolled out on the validation region with the results shown in Figure 10. The CNN model was able to identify glacier ice with high accuracy when compared to the index benchmark.
 
@@ -183,11 +183,15 @@ However, when the CNN model was rolled out on the deployment region the water bo
 
 **Figure 11** CNN model rollout on the deployment region.
 
+The masks crested from the rollout of the CNN model on the deployment region in 2017 and 2023 were used to quantify glacier retreat. Each pixel was compared to understand if glacier ice had been lost or gained. Additionally, the difference in previously identified ice pixels in 2017 and now identified ice pixels in 2023 to find an overall loss of 26.59% - shown in Figure 12.
+
 <p align="center">
   <img src="/Images/Glacier_retreat.png" width="600" height="auto"/>
 </p>
 
 **Figure 12** Glacier retreat (difference between 2017-2023 summer).
+
+Ice loss in the region can be predicted use and exponential decay function with the assumption of a 26.59% of ice loss in 6 years, leading to and exponential decay of 0.0515. This method is able to highlight the alarming glacier retreat rate, however, due to a multitude of complex variables it isn’t an accurate prediction.
 
 <p align="center">
   <img src="/Images/Projected_ice_loss.png" width="600" height="auto"/>
@@ -195,9 +199,7 @@ However, when the CNN model was rolled out on the deployment region the water bo
 
 **Figure 13** Projected glacier loss using an exponential decay model.
 
-
-Limitations:
-- Water and cloud detection
+It is important to reiterate the limitations of this model and its sensitivity to debris, moisture and water bodies. The model in this project is a proof of concept for the application and scalability in industry. To improve the model a larger training data set should be used over varying regions and conditions. Pre labelled data from scientific organisation could also help train and or validate the models. The CNN model can also be modified to use larger convolutional kernel size to include spatial data and the extraction of more information from the layers.
 
 # 4.0 Project enviromental Cost
 
