@@ -252,26 +252,28 @@ For the completion of the project additional indirect emission should be conside
 This project was created for the final project part of the AI for Earth Observation (GEOL0069) module taught by Dr Michel Tsamados at UCL.
 
 # References
-Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. https://github.com/lfwa/carbontracker.
+Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. https://github.com/lfwa/carbontracker
 
-Evans, S., & Tovey, M. (2025, January 2). Analysis: UK’s electricity was cleanest ever in 2024. Carbon Brief. https://www.carbonbrief.org/analysis-uks-electricity-was-cleanest-ever-in-2024/
+European Space Agency. (2025). Sentinel-2 operations. ESA. https://www.esa.int/Enabling_Support/Operations/Sentinel-2_operations
+
+Evans, S., & Tovey, M. (2025). Analysis: UK’s electricity was cleanest ever in 2024. Carbon Brief. https://www.carbonbrief.org/analysis-uks-electricity-was-cleanest-ever-in-2024/
+
+Google. (2024). Google’s 2024 environmental report. https://sustainability.google/reports/google-2024-environmental-report/
+
+IBM. (2024). What is k-means clustering? https://www.ibm.com/think/topics/k-means-clustering
+
+IBM. (2025). What are convolutional neural networks? https://www.ibm.com/think/topics/convolutional-neural-networks
+
+International Energy Agency. (2023). Data centres and data transmission networks. https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks
+
+Jeffares, A. (2019). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
 
 Keshri, A. K., Shukla, A., & Gupta, R. P. (2008). ASTER ratio indices for supraglacial terrain mapping. International Journal of Remote Sensing, 30(2), 519–524. https://doi.org/10.1080/01431160802385459
 
 Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
 
-Google. (2024). Google’s 2024 Environmental Report. https://sustainability.google/reports/google-2024-environmental-report/
+SentiWiki. (2025). S2 applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
 
-International Energy Agency. (2023). Data centres and data transmission networks. International Energy Agency. Retrieved May 21, 2025, from https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks
-
-IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
-
-IBM (2024). What is k-means clustering?, https://www.ibm.com/think/topics/k-means-clustering
-
-Jeffares, A. (2019). K-means: A complete introduction. Towards Data Science. https://medium.com/data-science/k-means-a-complete-introduction-1702af9cd8c
-
-SentiWiki. (2025). S2 Applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
-
-Sommer, C., Malz, P., Seehaus, T.C. et al. Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nat Commun 11, 3209 (2020). https://doi.org/10.1038/s41467-020-16818-0
+Sommer, C., Malz, P., Seehaus, T. C., et al. (2020). Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nature Communications, 11, 3209. https://doi.org/10.1038/s41467-020-16818-0
 
 
