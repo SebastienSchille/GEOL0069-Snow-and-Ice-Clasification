@@ -221,14 +221,31 @@ AI models require large computational power to train and validate the models bui
 
 ## Computing power
 
-Computer power will be the main source of emissions for this project with research, and coding required. 
+Computer power will be the main source of emissions for this project with access to the internet, research, and coding required. In the UK 1Kwh is responsible for 124g CO2 which is down by 74% since 2014 (Evans & Tovey, 2025). Under the assumption that a computer will use around 100W of energy, in a 8hrs day working 5 days a week, will lead to an 496 grams CO2  weekly.
 
--	Estimated Co2 emission per kWh in the UK
--	8hrs for 5 days estimation
+### CO₂ Emissions Calculation
+
+**Given:**
+- Weekly energy use: 4 kWh
+- UK carbon intensity (2024): 124 gCO₂/kWh
+
+**Calculation:**
+CO₂ emissions = 4 kWh/week × 124 gCO₂/kWh = 496 gCO₂/week
+
+Which is equivalent to: **0.496 kg CO₂/week**
 
 ## Cloud services
 
+Emissions from cloud services will come from data centres, data transmission and user devices. Cloud services run on large data centres with servers that work 24/7 and require huge amounts of energy to power and cool the equipment. When data is transmitted by uploading or downloading files, this requires a large network infrastructure, including cell towers and routers. Google has been committed to transitioning the power to its data centres to renewable sources (Google, 2024). The environmental impact of data services is not well understood, with misleading articles and figures easily found on the internet. However, the International Energy Agency has estimated that they account for 1-1.5% of global emissions and that the transition to renewable energy will be essential to curb the growth of energy demand over the next decade (International Energy Agency, 2023).
+
 ## Indirect emissions
+
+For the completion of the project additional indirect emission should be considered:
+
+-	Energy used in manufacturing and transport of equipment used
+-	Transport and building energy use for work environment
+-	Supply chain emissions from third party service providers
+-	Waste disposal related to project materials
 
 # Acknowledgments
 
@@ -237,9 +254,15 @@ This project was created for the final project part of the AI for Earth Observat
 # References
 Anthony, L. F. W., Kanding, B., & Selvan, R. (2020). Carbontracker: Tracking and predicting the carbon footprint of training deep learning models. ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems. https://github.com/lfwa/carbontracker.
 
+Evans, S., & Tovey, M. (2025, January 2). Analysis: UK’s electricity was cleanest ever in 2024. Carbon Brief. https://www.carbonbrief.org/analysis-uks-electricity-was-cleanest-ever-in-2024/
+
 Keshri, A. K., Shukla, A., & Gupta, R. P. (2008). ASTER ratio indices for supraglacial terrain mapping. International Journal of Remote Sensing, 30(2), 519–524. https://doi.org/10.1080/01431160802385459
 
 Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
+
+Google. (2024). Google’s 2024 Environmental Report. https://sustainability.google/reports/google-2024-environmental-report/
+
+International Energy Agency. (2023). Data centres and data transmission networks. International Energy Agency. Retrieved May 21, 2025, from https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks
 
 IBM. (2025). What are convolutional neural networks?, https://www.ibm.com/think/topics/convolutional-neural-networks
 
