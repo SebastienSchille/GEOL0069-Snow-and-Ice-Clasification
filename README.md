@@ -137,7 +137,7 @@ K-means classification is an unsupervised machine learning tool that doesn't req
 **Figure 6:** Illustration of K-means machine learning algorithm (Jeffares, 2019).
 
 ---
-K-means was used to classify glacier ice was used to generate the mask show in Figure 7. The confusion matrix (Figure 8) shows a high accuracy with the mask created by the benchmark indices, however there are some clear visual differences. The algorithm has successfully disregarded the water body in the deployment area however due to limited model depth it will struggle in more complex region especially determining between snow and ice. Therefore, it is preferable to train a CNN model that can be developed for high accuracy.
+K-means was used to classify glacier ice was used to generate the mask show in Figure 7. The confusion matrix (Figure 8) shows a high accuracy with the mask created by the benchmark indices, however there are some clear visual differences. The algorithm has successfully disregarded the water body in the deployment area however due to limited model depth it will struggle in more complex region especially determining between snow and ice. Therefore, it is preferable to train a CNN model that can be developed for higher accuracy.
 
 <p align="center">
   <img src="/Images/K_means_mask.png" width="1000" height="auto"/>
