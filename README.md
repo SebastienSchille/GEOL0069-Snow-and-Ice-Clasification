@@ -245,6 +245,10 @@ For the completion of the project additional indirect emission should be conside
 -	Supply chain emissions from third party service providers
 -	Waste disposal related to project materials
 
+# Project video
+
+Link to video:
+
 # Acknowledgments
 
 This project was created for the final project part of the AI for Earth Observation (GEOL0069) module taught by Dr Michel Tsamados at UCL.
