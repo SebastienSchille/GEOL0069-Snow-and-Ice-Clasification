@@ -108,15 +108,7 @@ However, this index will struggle to distinguish between snow and ice, leading t
 ---
 
 The combination of these two indices was used to create a benchmark mask.
-The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
-
-| **Aspect**       | **NDSI (> 0.4)**                              | **NDSII (> 0.3)**                           | **Overall Effect**                                                  |
-|------------------|----------------------------------------------|----------------------------------------------|---------------------------------------------------------------------|
-| What it detects  | Clean snow/ice (high green, low SWIR)        | Snow/ice with high NIR, low SWIR             | Targets clean glacier surfaces with high reflectance in green/NIR  |
-| Typical use      | Glacier/snow detection, conservative cutoff  | Snow/ice vs water or wet rock discrimination | Helps refine glacier detection beyond NDSI alone                   |
-| Sensitivity      | May miss debris-covered glaciers             | May exclude moist or shadowed glacier areas  | Might underdetect complex surfaces like dirty ice or thin snow     |
-
-**Table 2:** Explanation of differences between the NDSI and NDSII indices (SentiWiki, 2025)(Keshri, 2008).
+The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3). In turn the use of the NDSII has corrected the misidentification of the water body.
 
 <p align="center">
   <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
@@ -162,10 +154,9 @@ Convolutional Neural Networks (CNNs) are a type of supervised machine learning m
 
 # 3.0 Results & Discussion
 
-The snow and ice indices used for this project were used to create a benchmark mask for the machine learning models. The selection of adequate thresholds is often unclear and must be assessed for each area of interest - limiting scalability and increasing manual labour. To automate the process AI models can be used to learn from these indices and be trained on varying regions with different landscapes and conflicting objects, such as, bodies of water and clouds. In this project the Normalised Difference Snow Index (NDSI) was set with a threshold of >0.4 which removed fresh snow along with other misidentified features, while including the older glacier ice. When the threshold was increased to >0.5 older debris covered glacier ice was not considered as ice due to its lower reflectance in the green band. However, this lower threshold included a body of water in the lower right of the deployment region. To attempt to remove this feature an experiment index form (Keshri, 2008) stated as the Normalised Difference Snow and Ice Index (NDSII) and was applied in conjunction. The use of the additional NIR band allowed for the remove of the water body due to its low reflectance. In conclusion, indices used to categories land areas and identify feature as a powerful tool and require little processing power, however the correct application is essential to ensure accurate results.
+The snow and ice indices used for this project were used to create benchmark masks for the machine-learning models. The selection of adequate thresholds is often unclear and must be assessed for each area of interest - limiting scalability and increasing manual labour. To automate the process, AI models can be used to learn from these indices and be trained on varying regions with different landscapes and conflicting objects, such as bodies of water and clouds. In this project, the Normalised Difference Snow Index (NDSI) was set with a threshold of >0.4 which removed fresh snow along with other misidentified features, while including the older glacier ice. When the threshold was increased to >0.6 older debris-covered glacier ice was not considered as ice due to its lower reflectance in the green band. However, this lower threshold included a body of water in the lower right of the deployment region. To attempt to remove this feature an index from (Keshri, 2008) stated as the Normalised Difference Snow and Ice Index (NDSII) was applied in conjunction. The use of the additional NIR band allowed for the removal of the water body due to its low reflectance. In conclusion, indices used to categorise land areas and identify features are a powerful tool and require little processing power, however, the correct application is essential to ensure accurate results.
 
-The masks created by the indices (shown in Figure 5) where used to train the CNN model on the test region. This model was then rolled out on the validation region with the results shown in Figure 10. The CNN model was able to identify glacier ice with high accuracy when compared to the index benchmark.
-
+The masks created by the indices (shown in Figure 5) were used to train the CNN model on the test region. This model was then rolled out on the validation region with the results shown in Figure 10. The CNN model was able to identify glacier ice with high accuracy when compared to the index benchmark.
 
 <p align="center">
   <img src="/Images/CNN_validation_region.png" width="1000" height="auto"/>
@@ -173,7 +164,7 @@ The masks created by the indices (shown in Figure 5) where used to train the CNN
 
 **Figure 10** CNN model rollout on the validation region.
 
-However, when the CNN model was rolled out on the deployment region the water body was miss identified as glacier ice. This is likely due to the training area not including a water body for initial training. This highlights the importance of a large and varied training data set for a CNN model. This requires manual labour time and large processing cost.
+However, when the CNN model was rolled out on the deployment region the water body was misidentified as glacier ice. This is likely due to the training area not including a water body for initial training. This highlights the importance of a large and varied training dataset for a CNN model. This requires manual labour time and large processing cost.
 
 <p align="center">
   <img src="/Images/CNN_deployment_region.png" width="1000" height="auto"/>
@@ -181,7 +172,7 @@ However, when the CNN model was rolled out on the deployment region the water bo
 
 **Figure 11** CNN model rollout on the deployment region.
 
-The masks crested from the rollout of the CNN model on the deployment region in 2017 and 2023 were used to quantify glacier retreat. Each pixel was compared to understand if glacier ice had been lost or gained. Additionally, the difference in previously identified ice pixels in 2017 and now identified ice pixels in 2023 to find an overall loss of 26.59% - shown in Figure 12.
+The masks created from the rollout of the CNN model on the deployment region in 2017 and 2023 were used to quantify glacier retreat. Each pixel was compared to understand if glacier ice had been lost or gained with the difference quantified to find an overall loss of 26.59% - shown in Figure 12.
 
 <p align="center">
   <img src="/Images/Glacier_retreat.png" width="600" height="auto"/>
@@ -189,7 +180,7 @@ The masks crested from the rollout of the CNN model on the deployment region in 
 
 **Figure 12** Glacier retreat (difference between 2017-2023 summer).
 
-Ice loss in the region can be predicted use and exponential decay function with the assumption of a 26.59% of ice loss in 6 years, leading to and exponential decay of 0.0515. This method is able to highlight the alarming glacier retreat rate, however, due to a multitude of complex variables it isn’t an accurate prediction.
+Ice loss in the region can be predicted by using the exponential decay function with the assumption of a 26.59% of ice loss in 6 years, leading to an exponential decay of 0.0515. This method is able to highlight the alarming glacier retreat rate, however, due to a multitude of complex variables it isn’t an accurate prediction.
 
 <p align="center">
   <img src="/Images/Projected_ice_loss.png" width="600" height="auto"/>
@@ -197,7 +188,7 @@ Ice loss in the region can be predicted use and exponential decay function with 
 
 **Figure 13** Projected glacier loss using an exponential decay model.
 
-It is important to reiterate the limitations of this model and its sensitivity to debris, moisture and water bodies. The model in this project is a proof of concept for the application and scalability in industry. To improve the model a larger training data set should be used over varying regions and conditions. Pre labelled data from scientific organisation could also help train and or validate the models. The CNN model can also be modified to use larger convolutional kernel size to include spatial data and the extraction of more information from the layers.
+It is important to reiterate the limitations of this model and its sensitivity to debris, cloud cover and bodies of water. The model in this project is a proof of concept for the application and scalability in the industry. To improve the model, a larger training data set should be used on varying regions and conditions. Pre-labelled data from scientific organisations could also help train and validate the models. The CNN model can also be modified to use a larger convolutional kernel size to include spatial data and the extraction of more information from the layers.
 
 # 4.0 Project enviromental Cost
 
@@ -209,7 +200,7 @@ For simplification I have divided the environmental cost of this project into th
 
 ## 4.1 AI model training
 
-AI models require large computational power to train and validate the models built. To ensure the accuracy of these models, large data sets must be used along with many epochs. The estimation for the consumption of these models can be done with several programs created such as carbontracker (Anthony et al., 2020). The code create enables integration into the user’s code and will output total consumption. The output shown in Figure 14 is the estimated emissions related to training my AI model. However low the emission seem, the model was re trained many times and was a simplified proof of concept model compared to what would need to built for industry applications.
+AI models require large computational power to train and validate the models built. To ensure the accuracy of these models, large data sets must be used along with many epochs. The estimation for the consumption of these models can be done with several programs created such as carbontracker (Anthony et al., 2020). The code created enables integration into the user’s code and will output total consumption. The output shown in Figure 14 is the estimated emissions related to training my AI model. However low the emission seem, the model was re-trained many times and was a simplified proof of concept model compared to what would need to be built for industry applications.
 
 <p align="center">
   <img src="/Images/CNN_emissions.png" width="400" height="auto"/>
@@ -219,7 +210,7 @@ AI models require large computational power to train and validate the models bui
 
 ## Computing power
 
-Computer power will be the main source of emissions for this project with access to the internet, research, and coding required. In the UK 1Kwh is responsible for 124g CO2 which is down by 74% since 2014 (Evans & Tovey, 2025). Under the assumption that a computer will use around 100W of energy, in a 8hrs day working 5 days a week, will lead to an 496 grams CO2  weekly.
+Computer power will be the main source of emissions for this project, with access to the internet, research, and coding required. In the UK 1Kwh is responsible for 124g CO2 emissions, which is down by 74% since 2014 (Evans & Tovey, 2025). Under the assumption that a computer will use around 100W of energy, this will lead to approximately 496g CO2 emissions weekly (8hr workday day, 5 days a week).
 
 ### CO₂ Emissions Calculation
 
@@ -238,16 +229,16 @@ Emissions from cloud services will come from data centres, data transmission and
 
 ## Indirect emissions
 
-For the completion of the project additional indirect emission should be considered:
+For the completion of the project, additional indirect emissions should be considered:
 
 -	Energy used in manufacturing and transport of equipment used
--	Transport and building energy use for work environment
--	Supply chain emissions from third party service providers
+-	Transport and building energy use for the work environment
+-	Supply chain emissions from third-party service providers
 -	Waste disposal related to project materials
 
 # Project video
 
-Link to video:
+Link to video: https://youtu.be/9avymYPL48U
 
 # Acknowledgments
 
@@ -274,7 +265,7 @@ Keshri, A. K., Shukla, A., & Gupta, R. P. (2008). ASTER ratio indices for suprag
 
 Paul, F., Kääb, A., & Haeberli, W. (2007). Recent glacier changes in the Alps observed by satellite: Consequences for future monitoring strategies. Global and Planetary Change, 56(1–2), 111–122. https://doi.org/10.1016/j.gloplacha.2006.07.007
 
-SentiWiki. (2025). S2 applications. Copernicus. Retrieved May 19, 2025, from https://sentiwiki.copernicus.eu/web/s2-applications
+SentiWiki. (2025). S2 applications. Copernicus. https://sentiwiki.copernicus.eu/web/s2-applications
 
 Sommer, C., Malz, P., Seehaus, T. C., et al. (2020). Rapid glacier retreat and downwasting throughout the European Alps in the early 21st century. Nature Communications, 11, 3209. https://doi.org/10.1038/s41467-020-16818-0
 
