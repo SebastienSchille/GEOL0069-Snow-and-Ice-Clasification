@@ -7,9 +7,9 @@
 
 # 1.0 Project Background
 
-Glaciers are extremely sensitive to climate change and can be studied to highlight the rapid change in alpine landscape within the 21st Century (Sommer et al., 2020). There has been an alarming increase in glacier retreat around the globe, leading to catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and local economies. Accurate monitoring is not only crucial for assessing the impacts of climate change but also for informing mitigation and adaptation strategies (Paul et al., 2007).
+Glaciers are extremely sensitive to climate change and can be studied to highlight the rapid change in alpine landscape within the 21st Century (Sommer et al., 2020). There has been an alarming increase in glacier retreats around the globe, leading to catastrophic consequences on mountain ecosystems, freshwater supplies, tourism, and local economies. Accurate monitoring is not only crucial for assessing the impacts of climate change but also for informing mitigation and adaptation strategies (Paul et al., 2007).
 
-Traditional data collection methods, such as sample collection and manual interpretation of satellite data, can be highly time-consuming and often provide limited insights. Earth observation satellites launched within the Copernicus program have provided scientists with various datasets for a multitude of applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
+Traditional data collection methods, such as sample collection and manual interpretation of satellite data, can be highly time-consuming and often provide limited insight. Earth observation satellites launched within the Copernicus program have provided scientists with various datasets for a multitude of applications. Artificial intelligence can help refine models used to interpret results, improve understanding, and automate the process.
 
 This project will focus on the Swiss Alps and the change in glacier ice coverage between 2017 and 2023 using Sentinel-2 data. The Normalised Difference Snow Index (NDSI) will be used as a benchmark and for training the CNN model. Unsupervised and supervised AI models will be deployed, with results quantified and discussed. Additionally, this project hopes to demonstrate proof of concept with a model that is transferable to other regions and discuss the limitations and recommended model changes.
 
@@ -29,13 +29,11 @@ The following dates were selected:
 
 ---
 
-Figure 1 shows the areas selceted for model training, validation and deploment. The darker areas in the SWIR band will represent ice in this case.
-
 <p align="center">
   <img src="/Images/area_of_interest.png" width="1000" height="auto"/>
 </p>
 
-**Figure 1:** Satellite images in the SWIR band for the areas of interest.
+**Figure 1:** The areas selceted for model training, validation and deploment. The darker areas in the SWIR band will represent snow ice in this case.
 
 ## 1.2 Aims & Objectives
 
@@ -43,15 +41,15 @@ Figure 1 shows the areas selceted for model training, validation and deploment. 
 
 **2.** To calculate the Normalised Difference Snow Index (NDSI) and Normalised Difference Snow and Ice Index (NDSII) as benchmark indicators of snow and glacier-covered areas
 
-**3.** To apply k-means learning as an unsupervised method for initial classification of areas with glacier ice cover.
+**3.** To apply k-means algorithm as an unsupervised method for initial classification of areas with glacier ice cover.
 
-**4.** To train a Convolutional Neural Network (CNN) using labelled data derived from a mask created using the benchmark indicators.
+**4.** To train a Convolutional Neural Network (CNN) using labelled data derived from a mask created using the benchmark indices.
 
 **5.** To validate the machine learning outputs by comparing them to NDSI/NDSII-based classifications.
 
-**6.** To quantify changes in glacier extent between 2017 and 2023 by analysing the differences between glacier masks.
+**6.** To quantify changes in glacier cover between 2017 & 2023 by analysing the differences between glacier masks.
 
-**7.** To evaluate the accuracy and limitations of combining unsupervised and supervised learning for glacier monitoring, including the scalability and potential model improvements
+**7.** To evaluate the accuracy and limitations of unsupervised and supervised learning for glacier monitoring, including the scalability and potential model improvements.
    
 # 2.0 Methodology
 
@@ -69,9 +67,9 @@ Sentinel-2 is equipped with a with an advanced Multispectral Instrument (MSI). T
 
 | Band | Name                | Wavelength (nm) | Resolution | Use for Glacier Mapping                           |
 |------|---------------------|------------------|-------------|---------------------------------------------------|
-| B2   | Blue                | 490              | 10 m        | Atmospheric correction, snow detection            |
-| B3   | Green               | 560              | 10 m        | Used in **NDSI** to detect snow/ice               |
-| B4   | Red                 | 665              | 10 m        | General land cover classification                 |
+| B2   | Blue                | 490              | 20 m        | Atmospheric correction, snow detection            |
+| B3   | Green               | 560              | 20 m        | Used in **NDSI** to detect snow/ice               |
+| B4   | Red                 | 665              | 20 m        | General land cover classification                 |
 | B8A  | Narrow NIR          | 865              | 20 m        | Used in **NDSII**, better glacier detection       |
 | B11  | SWIR                | 1610             | 20 m        | Used in **NDSI & NDSII**, ice and snow absorption |
 
@@ -79,7 +77,7 @@ Sentinel-2 is equipped with a with an advanced Multispectral Instrument (MSI). T
 
 ## 2.2 Snow and Ice Indices
 
-This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance (SentiWiki, 2025). Snow and ice reflect green visible light while it is highly absorbative of short-wave infrared (SWIR). Additionally, clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be calculated from the equation below:
+This project uses a combination of indices that have been developed for snow and ice detection. The Normalised Difference Snow Index (NDSI) is used to identify snow-covered areas by using the green band and the SWIR reflectance (SentiWiki, 2025). Snow and ice reflect green visible light while they are highly absorbative of short-wave infrared (SWIR). Additionally, clouds reflect the SWIR band enabling to disregard them as snow or ice. The NDSI can be calculated from the equation below:
 
 **NDSI** = (B3 − B11) / (B3 + B11)  
 
@@ -93,7 +91,7 @@ This project uses a combination of indices that have been developed for snow and
 
 **Figure 3:** NDSI calculated for the three areas of interest.
 
-However, this index will struggle to distinguish between snow and ice, leading to misidentification. Additionally, in Figure 3 the NDSI index has labelled a frozen lake as glacier ice in the deployment region. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used (Keshri, 2008). This index helps to differentiate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
+However, this index will struggle to distinguish between snow and ice, leading to misidentification. Additionally, in Figure 3 the NDSI index has labelled a water body as glacier ice in the deployment region. To combat this issue the Normalised Difference Snow and Ice Index (NDSII) can be used (Keshri, 2008). This index helps to differentiate between snow and ice by using the NIR band. Glacier ice will reflect the NIR band more than snow hence aiding to distinguish them.
 
 **NDSII** = (B11 − B8A) / (B11 + B8A)  
 
@@ -124,7 +122,7 @@ The threshold is set as: glacier_mask = (ndsi > 0.4) & (ndsii > 0.3).
   <img src="/Images/NDSI_NDSII_mask.png" width="1000" height="auto"/>
 </p>
 
-**Figure 5:** Mask created and labelled for glacier ice using the NDSI & NDSII indices.
+**Figure 5:** Masks created and labelled for glacier ice using the NDSI & NDSII indices.
 
 ## 2.3 K-means learning
 
@@ -137,7 +135,7 @@ K-means classification is an unsupervised machine learning tool that doesn't req
 **Figure 6:** Illustration of K-means machine learning algorithm (Jeffares, 2019).
 
 ---
-K-means was used to classify glacier ice was used to generate the mask show in Figure 7. The confusion matrix (Figure 8) shows a high accuracy with the mask created by the benchmark indices, however there are some clear visual differences. The algorithm has successfully disregarded the water body in the deployment area however due to limited model depth it will struggle in more complex region especially determining between snow and ice. Therefore, it is preferable to train a CNN model that can be developed for higher accuracy.
+K-means was used to classify glacier ice and to generate the mask show in Figure 7. The confusion matrix (Figure 8) shows a high accuracy with the mask created by the benchmark indices, however, there are some clear visual differences. The algorithm has successfully disregarded the water body in the deployment area however due to limited model depth it will struggle in more complex region especially determining between snow and ice. Therefore, it is preferable to train a CNN model that can be developed for higher accuracy.
 
 <p align="center">
   <img src="/Images/K_means_mask.png" width="1000" height="auto"/>
@@ -154,7 +152,7 @@ K-means was used to classify glacier ice was used to generate the mask show in F
 
 ## 2.4 CNN model
 
-Convolutional Neural Networks (CNNs) are a type of supervised machine learning model that are trained using labelled datasets. These networks are particularly well-suited for classification tasks, such as image recognition, object detection, and segmentation, because they are specifically designed to process data with a grid-like topology. CNNs operate by applying convolutional filters across the input data, allowing them to automatically detect and learn important patterns, trends, textures, and spatial hierarchies within the images (IBM, 2025). This capability enables CNNs to extract features at multiple scales and levels of abstraction, from simple edges to complex shapes. In this project, a CNN model will be trained using labelled data derived from benchmark indices alongside Sentinal-2 optical bands listed in Table 1.
+Convolutional Neural Networks (CNNs) are a type of supervised machine learning model that are trained using labelled datasets. These networks are particularly well-suited for classification tasks, such as image recognition, object detection, and segmentation, because they are specifically designed to process data with a grid-like topology. CNNs operate by applying convolutional filters across the input data, allowing them to automatically detect and learn important patterns, trends, textures, and spatial hierarchies within the images (IBM, 2025). This capability enables CNNs to extract features from simple edges to complex shapes. In this project, a CNN model will be trained using labelled data derived from benchmark indices alongside Sentinal-2 optical bands listed in Table 1.
 
 <p align="center">
   <img src="/Images/CNN_figure.png" width="600" height="auto"/>
